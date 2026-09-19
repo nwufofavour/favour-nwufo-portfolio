@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Favour Nwufo — student nurse, data analytics learner and digital skills enthusiast.">
+<title>Favour Nwufo | Nursing × Data × Digital Skills</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root{
+  --cream:#f7f3ee;
+  --paper:#fffdfa;
+  --white:#fff;
+  --ink:#292a2d;
+  --muted:#686b70;
+  --soft:#e9e5df;
+  --accent:#a0523d;
+  --accent-light:#ead1c9;
+  --line:rgba(41,42,45,.12);
+  --shadow:0 18px 50px rgba(41,42,45,.09);
+  --radius:24px;
+  --max:1180px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  font-family:"DM Sans",sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(var(--max),90%);margin:auto}
+.section{padding:100px 0}
+.eyebrow{
+  color:var(--accent);
+  font-size:.74rem;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+h1,h2,h3{font-family:"Playfair Display",serif}
+h1,h2{letter-spacing:-.035em}
+p{color:var(--muted)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.show{opacity:1;transform:none}
+
+/* Header */
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  min-height:74px;
+  background:rgba(247,243,238,.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  min-height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  font-family:"Playfair Display",serif;
+  font-size:1.55rem;
+  font-weight:700;
+}
+.logo span{color:var(--accent)}
+.nav{display:flex;align-items:center;gap:28px}
+.nav a{font-size:.9rem;font-weight:600;color:var(--muted);transition:.2s}
+.nav a:hover{color:var(--accent)}
+.nav .nav-cta{
+  color:var(--white);
+  background:var(--ink);
+  padding:10px 17px;
+  border-radius:999px;
+}
+.menu-toggle{
+  display:none;
+  border:1px solid var(--line);
+  background:var(--paper);
+  color:var(--ink);
+  width:44px;height:44px;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+/* Hero */
+.hero{padding:78px 0 92px}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:70px;
+  align-items:center;
+}
+.hero h1{
+  font-size:clamp(3.5rem,7vw,6.8rem);
+  line-height:.94;
+  max-width:760px;
+}
+.hero h1 em{font-weight:500}
+.hero-text{
+  max-width:650px;
+  margin:28px 0;
+  font-size:1.06rem;
+}
+.actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 20px;
+  border-radius:999px;
+  font-weight:700;
+  transition:.2s ease;
+}
+.btn-primary{background:var(--ink);color:var(--white)}
+.btn-primary:hover{background:var(--accent);transform:translateY(-2px)}
+.btn-outline{border:1px solid var(--line);background:var(--paper)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.hero-card{
+  min-height:470px;
+  background:var(--ink);
+  color:var(--white);
+  border-radius:32px;
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  position:relative;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.hero-card:before{
+  content:"";
+  position:absolute;
+  width:260px;height:260px;
+  border-radius:50%;
+  background:var(--accent);
+  right:-100px;bottom:-100px;
+}
+.card-top,.card-bottom,.card-main{position:relative;z-index:1}
+.card-top{display:flex;justify-content:space-between;color:#d5d5d5;font-size:.86rem}
+.status{display:flex;align-items:center;gap:8px}
+.status i{width:8px;height:8px;border-radius:50%;background:#d6a08f}
+.card-main h2{font-size:clamp(3.2rem,5vw,5rem);line-height:.94;margin:20px 0}
+.card-main h2 em{color:#e7b7aa}
+.card-main p{color:#ddd}
+.card-bottom{display:flex;justify-content:space-between;gap:12px;font-size:.82rem;color:#d5d5d5}
+
+/* Intro */
+.intro{
+  background:var(--soft);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.intro-inner{padding:72px 0}
+.intro h2{
+  max-width:1000px;
+  font-size:clamp(2.2rem,4.8vw,4.3rem);
+  line-height:1.04;
+}
+.intro h2 span{color:var(--accent)}
+
+/* About */
+.two-col{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:60px;
+}
+.section-label{
+  color:var(--accent);
+  font-size:.74rem;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+.about-content{max-width:800px}
+.about-content h2{
+  font-size:clamp(2.5rem,5vw,4.6rem);
+  line-height:1.02;
+  margin-bottom:28px;
+}
+.about-content p{font-size:1.04rem;margin-bottom:18px}
+.quote{
+  margin-top:30px;
+  padding:22px 24px;
+  background:var(--paper);
+  border-left:4px solid var(--accent);
+  border-radius:0 16px 16px 0;
+  font-family:"Playfair Display",serif;
+  font-size:1.15rem;
+}
+
+/* Skills */
+.skills{background:var(--ink);color:var(--white)}
+.skills .eyebrow{color:#dca798}
+.skills-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+}
+.skills-heading h2{font-size:clamp(2.6rem,5vw,4.7rem);line-height:1}
+.skills-heading p{max-width:410px;color:#c8c8c8}
+.skill-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:48px;
+}
+.skill-card{
+  padding:28px;
+  min-height:270px;
+  border-radius:22px;
+  background:#36373a;
+  border:1px solid rgba(255,255,255,.08);
+  display:flex;
+  flex-direction:column;
+}
+.skill-card:nth-child(2),.skill-card:nth-child(4){background:#303134}
+.skill-number{font-size:.75rem;color:#aaa;font-weight:700}
+.skill-card h3{font-size:1.65rem;margin:38px 0 12px}
+.skill-card p{color:#c9c9c9;font-size:.9rem}
+.progress{height:3px;background:rgba(255,255,255,.12);margin-top:auto}
+.progress i{display:block;height:100%;background:#e4b1a4}
+
+/* Journey */
+.journey{background:var(--paper)}
+.timeline{margin-top:15px;max-width:850px}
+.timeline-item{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:22px;
+  padding:25px 0;
+  border-bottom:1px solid var(--line);
+}
+.timeline-dot{
+  width:38px;height:38px;
+  border-radius:50%;
+  background:var(--accent-light);
+  color:var(--accent);
+  display:grid;
+  place-items:center;
+  font-weight:800;
+  font-size:.78rem;
+}
+.timeline-item h3{font-size:1.5rem;margin-bottom:7px}
+.timeline-item p{font-size:.98rem}
+
+/* Services */
+.services{background:var(--soft)}
+.section-heading h2{font-size:clamp(2.7rem,5vw,4.7rem);line-height:1}
+.service-list{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:45px;
+}
+.service{
+  padding:30px;
+  min-height:250px;
+  border-radius:24px;
+  background:var(--white);
+  border:1px solid rgba(41,42,45,.09);
+  box-shadow:0 12px 35px rgba(41,42,45,.06);
+  transition:.25s ease;
+}
+.service:nth-child(2){
+  background:var(--accent);
+  color:var(--white);
+  border-color:var(--accent);
+}
+.service:hover{transform:translateY(-5px)}
+.service-mark{
+  width:34px;height:3px;
+  border-radius:20px;
+  background:var(--accent);
+}
+.service:nth-child(2) .service-mark{background:#f3d5cc}
+.service h3{font-size:1.65rem;margin:34px 0 10px}
+.service p{font-size:.96rem}
+.service:nth-child(2) p{color:#f7e7e2}
+
+/* Projects */
+.projects{background:var(--cream)}
+.project-shell{
+  margin-top:45px;
+  display:grid;
+  grid-template-columns:1fr .7fr;
+  gap:18px;
+}
+.project-main,.project-small{
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:var(--paper);
+  padding:32px;
+}
+.project-main{
+  min-height:310px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.project-tag{
+  display:inline-flex;
+  align-self:flex-start;
+  padding:7px 11px;
+  border-radius:999px;
+  background:var(--accent-light);
+  color:var(--accent);
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.06em;
+}
+.project-main h3{font-size:clamp(2rem,4vw,3.3rem);line-height:1;margin:22px 0 12px}
+.project-small{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:var(--ink);
+  color:var(--white);
+}
+.project-small p{color:#ccc;margin-top:12px}
+.project-small .project-tag{background:#4a4b4e;color:#f0bfb2}
+.project-note{font-size:.85rem;margin-top:20px}
+
+/* Contact */
+.contact{
+  background:var(--accent);
+  color:var(--white);
+}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr .8fr;
+  gap:60px;
+  align-items:end;
+}
+.contact .eyebrow{color:#f0c6ba}
+.contact h2{font-size:clamp(3rem,6vw,5.7rem);line-height:.96}
+.contact-copy>p:last-child{max-width:520px;color:#f6e4df;margin-top:24px}
+.contact-links{display:flex;flex-direction:column;gap:10px}
+.contact-links a{
+  background:var(--white);
+  color:var(--ink);
+  border-radius:15px;
+  padding:17px 20px;
+  display:flex;
+  justify-content:space-between;
+  font-weight:700;
+  transition:.2s;
+}
+.contact-links a:hover{transform:translateX(5px)}
+
+/* Footer */
+footer{
+  background:#222326;
+  color:#bdbdbd;
+  padding:28px 0;
+}
+.footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.footer-logo{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:700}
+.footer-logo span{color:var(--accent)}
+footer p{font-size:.82rem}
+
+/* Responsive */
+
+/* Portfolio 2.0 additions */
+.exploring{background:var(--cream)}
+.explore-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:45px;
+}
+.explore-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:28px;
+  min-height:250px;
+  transition:.25s ease;
+}
+.explore-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.explore-card>span{
+  color:var(--accent);
+  font-size:.75rem;
+  font-weight:800;
+}
+.explore-card h3{font-size:1.55rem;margin:35px 0 12px}
+.explore-card p{font-size:.92rem}
+
+.currently{
+  background:var(--paper);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:78px 0;
+}
+.currently-grid{
+  display:grid;
+  grid-template-columns:.75fr 1.25fr;
+  gap:70px;
+  align-items:center;
+}
+.currently h2{
+  font-size:clamp(2.2rem,4vw,3.7rem);
+  line-height:1.02;
+}
+.current-list{border-top:1px solid var(--line)}
+.current-item{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+}
+.current-item span{
+  color:var(--accent);
+  font-size:.78rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.current-item strong{font-size:.95rem;text-align:right}
+
+.personal-note{
+  max-width:600px;
+  margin-top:32px;
+  font-family:"Playfair Display",serif;
+  font-size:1.18rem;
+  color:#f8e8e3;
+}
+
+@media(max-width:950px){
+  .explore-grid{grid-template-columns:repeat(2,1fr)}
+  .currently-grid{grid-template-columns:1fr;gap:35px}
+}
+@media(max-width:700px){
+  .explore-grid{grid-template-columns:1fr}
+  .explore-card{min-height:auto}
+  .currently{padding:60px 0}
+  .current-item{display:block}
+  .current-item strong{display:block;text-align:left;margin-top:5px}
+}
+
+@media(max-width:950px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-card{min-height:390px}
+  .skill-grid{grid-template-columns:repeat(2,1fr)}
+  .service-list{grid-template-columns:1fr}
+  .project-shell{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:700px){
+  .section{padding:76px 0}
+  .container{width:min(92%,560px)}
+  .header,.header-inner{min-height:68px}
+  .menu-toggle{display:block}
+  .nav{
+    position:absolute;
+    top:68px;
+    left:4%;
+    right:4%;
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    padding:10px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+  }
+  .nav.open{display:flex}
+  .nav a{padding:12px}
+  .nav .nav-cta{text-align:center;border-radius:11px}
+  .hero{padding:58px 0 70px}
+  .hero h1{font-size:clamp(3.1rem,15vw,4.5rem)}
+  .hero-text{font-size:1rem;margin:23px 0}
+  .actions{gap:10px}
+  .btn{width:100%}
+  .hero-card{min-height:350px;padding:24px;border-radius:24px}
+  .card-main h2{font-size:3.6rem}
+  .intro-inner{padding:58px 0}
+  .intro h2{font-size:2.35rem}
+  .two-col{grid-template-columns:1fr;gap:18px}
+  .about-content h2{font-size:2.7rem}
+  .skills-heading{display:block}
+  .skills-heading p{margin-top:18px}
+  .skill-grid{grid-template-columns:1fr;margin-top:32px}
+  .skill-card{min-height:225px}
+  .timeline-item{grid-template-columns:38px 1fr;gap:15px}
+  .timeline-dot{width:32px;height:32px;font-size:.68rem}
+  .service{min-height:220px;padding:25px}
+  .project-main,.project-small{padding:25px}
+  .contact h2{font-size:3.3rem}
+  .footer-inner{align-items:flex-start;flex-direction:column}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  *{transition:none!important}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="#home" class="logo" aria-label="Favour Nwufo home">FN<span>.</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav">☰</button>
+    <nav class="nav" id="nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#learning">Learning</a>
+      <a href="#exploring">Explore</a>
+      <a href="#journey">Journey</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact" class="nav-cta">Let's Connect</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">STUDENT NURSE · ASPIRING DATA ANALYST · DIGITAL SKILLS ENTHUSIAST</p>
+      <h1>Learning, building & <em>becoming.</em></h1>
+      <p class="hero-text">
+        I'm Favour — a student nurse exploring the world of data analytics,
+        technology and digital skills while building a career that brings
+        healthcare and technology closer together.
+      </p>
+      <div class="actions">
+        <a href="#about" class="btn btn-primary">Discover my journey <span>→</span></a>
+        <a href="#contact" class="btn btn-outline">Let's connect</a>
+      </div>
+    </div>
+
+    <div class="hero-card reveal">
+      <div class="card-top">
+        <span class="status"><i></i> Currently learning</span>
+        <span>2026</span>
+      </div>
+      <div class="card-main">
+        <h2>Data<br><em>Analytics</em></h2>
+        <p>Excel · SQL · Power BI</p>
+      </div>
+      <div class="card-bottom">
+        <span>Healthcare × Technology</span>
+        <span>In progress →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="container intro-inner reveal">
+    <p class="eyebrow">About</p>
+    <h2>A student with curiosity in one hand and <span>technology</span> in the other.</h2>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container two-col">
+    <div class="section-label reveal">ABOUT ME</div>
+    <div class="about-content reveal">
+      <h2>I'm still building.<br><em>And that's the point.</em></h2>
+      <p>
+        I'm a student nurse developing myself beyond the classroom. Alongside
+        nursing, I'm learning data analytics and web development because I
+        believe useful skills can open new ways to learn, solve problems and
+        create opportunities.
+      </p>
+      <p>
+        This website is part of that journey. I don't have a long list of
+        projects yet — I'm building them one step at a time and documenting
+        the process honestly.
+      </p>
+      <div class="quote">“We are called to serve humanity.”</div>
+    </div>
+  </div>
+</section>
+
+<section class="section exploring" id="exploring">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">What I'm Exploring</p>
+      <h2>Different paths.<br><em>One journey.</em></h2>
+    </div>
+
+    <div class="explore-grid">
+      <article class="explore-card reveal">
+        <span>01</span>
+        <h3>Nursing</h3>
+        <p>Building my foundation in healthcare while learning what it means to serve people with knowledge and care.</p>
+      </article>
+      <article class="explore-card reveal">
+        <span>02</span>
+        <h3>Data Analytics</h3>
+        <p>Learning how data can be cleaned, understood and turned into information that supports better decisions.</p>
+      </article>
+      <article class="explore-card reveal">
+        <span>03</span>
+        <h3>Technology</h3>
+        <p>Exploring web development and digital tools while becoming more comfortable creating things from scratch.</p>
+      </article>
+      <article class="explore-card reveal">
+        <span>04</span>
+        <h3>Digital Skills</h3>
+        <p>Developing practical skills that help me learn, communicate, create and work more confidently online.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section skills" id="learning">
+  <div class="container">
+    <div class="skills-heading reveal">
+      <div>
+        <p class="eyebrow">What I'm Learning</p>
+        <h2>Skills in <em>progress.</em></h2>
+      </div>
+      <p>Learning through practical exercises, consistent practice and small projects.</p>
+    </div>
+
+    <div class="skill-grid">
+      <article class="skill-card reveal">
+        <span class="skill-number">01</span>
+        <h3>Excel</h3>
+        <p>Cleaning, organizing, formulas, tables and practical spreadsheet work.</p>
+        <div class="progress"><i style="width:72%"></i></div>
+      </article>
+
+      <article class="skill-card reveal">
+        <span class="skill-number">02</span>
+        <h3>SQL</h3>
+        <p>Building a foundation in querying, filtering, sorting and working with data.</p>
+        <div class="progress"><i style="width:48%"></i></div>
+      </article>
+
+      <article class="skill-card reveal">
+        <span class="skill-number">03</span>
+        <h3>Power BI</h3>
+        <p>Learning data transformation, visuals and dashboard development.</p>
+        <div class="progress"><i style="width:42%"></i></div>
+      </article>
+
+      <article class="skill-card reveal">
+        <span class="skill-number">04</span>
+        <h3>Web Development</h3>
+        <p>HTML, CSS and JavaScript — turning ideas into functional websites.</p>
+        <div class="progress"><i style="width:55%"></i></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section journey" id="journey">
+  <div class="container two-col">
+    <div class="section-label reveal">MY JOURNEY</div>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">01</div>
+        <div>
+          <h3>Building my data foundation</h3>
+          <p>Learning Excel, SQL and Power BI through practical exercises and consistent practice.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">02</div>
+        <div>
+          <h3>First analytics projects</h3>
+          <p>Turning what I learn into simple, honest projects that can live on this website.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">03</div>
+        <div>
+          <h3>Connecting healthcare & data</h3>
+          <p>Exploring how technology and data can support better decisions and meaningful work in healthcare.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section services" id="services">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">What I Can Help With</p>
+      <h2>Simple skills.<br><em>Useful work.</em></h2>
+    </div>
+
+    <div class="service-list">
+      <article class="service reveal">
+        <div class="service-mark"></div>
+        <h3>Data Entry</h3>
+        <p>Accurate entry and organization of information.</p>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-mark"></div>
+        <h3>Spreadsheet Support</h3>
+        <p>Basic cleaning, formatting and organization.</p>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-mark"></div>
+        <h3>Web Design</h3>
+        <p>Simple responsive websites using HTML, CSS and JavaScript.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="currently">
+  <div class="container currently-grid">
+    <div class="reveal">
+      <p class="eyebrow">Currently</p>
+      <h2>What I'm working on right now.</h2>
+    </div>
+    <div class="current-list">
+      <div class="current-item reveal"><span>Learning</span><strong>SQL & Data Analytics</strong></div>
+      <div class="current-item reveal"><span>Building</span><strong>My portfolio & beginner projects</strong></div>
+      <div class="current-item reveal"><span>Exploring</span><strong>Healthcare × Technology</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">Projects</p>
+      <h2>Small steps.<br><em>Real progress.</em></h2>
+    </div>
+
+    <div class="project-shell">
+      <article class="project-main reveal">
+        <div>
+          <span class="project-tag">IN PROGRESS</span>
+          <h3>My first analytics projects</h3>
+          <p>As I complete my first Excel, SQL and Power BI projects, they'll be added here.</p>
+        </div>
+        <p class="project-note">This space will grow alongside my skills.</p>
+      </article>
+
+      <article class="project-small reveal">
+        <span class="project-tag">BUILDING IN PUBLIC</span>
+        <h3>Learning by doing.</h3>
+        <p>This portfolio is part of the process — not a finished destination.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-copy reveal">
+      <p class="eyebrow">Contact</p>
+      <h2>Let's start a<br><em>conversation.</em></h2>
+      <p>Whether you'd like to connect, collaborate or talk about a project, I'd love to hear from you.</p>
+      <p class="personal-note">I'm learning one skill at a time, building one project at a time, and becoming better along the way.</p>
+    </div>
+
+    <div class="contact-links reveal">
+      <a href="https://www.linkedin.com/in/favour-nwufo-6380633a9" target="_blank" rel="noopener">
+        <span>LinkedIn</span><b>↗</b>
+      </a>
+      <a href="https://wa.me/2349110361450" target="_blank" rel="noopener">
+        <span>WhatsApp</span><b>↗</b>
+      </a>
+      <a href="mailto:favour.U.nwufo@gmail.com">
+        <span>Email</span><b>↗</b>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-logo">FN<span>.</span></div>
+    <p>Learning. Building. Serving.</p>
+    <p>© <span id="year"></span> Favour Nwufo</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("nav");
+  const year = document.getElementById("year");
+
+  if (year) year.textContent = new Date().getFullYear();
+
+  if (menuToggle && nav) {
+    menuToggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      menuToggle.textContent = open ? "×" : "☰";
+    });
+
+    nav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        menuToggle.textContent = "☰";
+      });
+    });
+  }
+
+  const items = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12});
+
+    items.forEach(item => observer.observe(item));
+  } else {
+    items.forEach(item => item.classList.add("show"));
+  }
+});
+</script>
+
+</body>
+</html>
